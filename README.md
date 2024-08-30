@@ -92,20 +92,32 @@ Create the following manifest files in the `manifests` directory:
 
 To bootstrap Flux and configure it to monitor your GitHub repository:
 
-1. Run pre-installation checks:
+1.  Create a Kind cluster:
+
+ ```bash
+    kind create cluster --image kindest/node:v1.28.0 --name flux-cluster
+    ```
+
+2. Verify the state of cluster:
+
+ ```bash
+    kubectl cluster-info --context kind-flux-cluster
+    ```
+
+3. Run pre-installation checks:
 
     ```bash
     flux check --pre
     ```
 
-2. Export your GitHub credentials:
+4. Export your GitHub credentials:
 
     ```bash
     export GITHUB_TOKEN=<your-token>
     export GITHUB_USER=<your-username>
     ```
 
-3. Run the bootstrap command:
+5. Run the bootstrap command:
 
     ```bash
     flux bootstrap github \
@@ -115,13 +127,13 @@ To bootstrap Flux and configure it to monitor your GitHub repository:
       --path=clusters/my-cluster
     ```
 
-4. Verify Flux installation:
+6. Verify Flux installation:
 
     ```bash
     kubectl get pods -n flux-system
     ```
 
-5. Pull the latest changes:
+7. Pull the latest changes:
 
     ```bash
     git pull
