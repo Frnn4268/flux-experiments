@@ -94,15 +94,15 @@ To bootstrap Flux and configure it to monitor your GitHub repository:
 
 1.  Create a Kind cluster:
 
- ```bash
+     ```bash
     kind create cluster --image kindest/node:v1.28.0 --name flux-cluster
     ```
 
 2. Verify the state of cluster:
 
- ```bash
+     ```bash
     kubectl cluster-info --context kind-flux-cluster
-    ```
+     ```
 
 3. Run pre-installation checks:
 
